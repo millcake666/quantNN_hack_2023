@@ -7,6 +7,9 @@ from qiskit.algorithms.minimum_eigensolvers import SamplingVQE
 from qiskit.algorithms.optimizers import SPSA
 from qiskit_optimization.algorithms import MinimumEigenOptimizer
 from qiskit.primitives import Sampler
+from time import perf_counter
+
+start_time = perf_counter()
 
 n = 5
 G = nx.Graph()
@@ -62,4 +65,5 @@ print(result.prettyprint())
 
 colors = ["g" if result.x[i] == 0 else "r" for i in range(n)]
 draw_graph(G, colors, pos)
+print(f'processed time: {perf_counter() - start_time}')
 plt.show()
